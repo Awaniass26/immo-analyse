@@ -1,0 +1,42 @@
+{
+  "total_recus": 3184,
+  "recus_par_source": {
+    "plateforme": 875,
+    "particuliers": 731,
+    "agence": 640,
+    "historique": 528,
+    "notaires": 410
+  },
+  "valeurs_manquantes_par_colonne": {
+    "type_transaction": 1578,
+    "ville": 8,
+    "quartier": 2309,
+    "prix": 85,
+    "devise": 2309,
+    "surface": 80,
+    "pieces": 2309,
+    "chambres": 875,
+    "salles_bain": 410,
+    "statut": 528
+  },
+  "doublons_exacts": {
+    "nombre": 14,
+    "taux_pct": 0.48,
+    "denominateur": "enregistrements hors quarantaine"
+  },
+  "doublons_probables": 4,
+  "conflits_identifiants": 0,
+  "erreurs_de_conversion": {
+    "prix": 8,
+    "surface": 4,
+    "date": 6
+  },
+  "enregistrements_corriges": 2089,
+  "enregistrements_en_quarantaine": 246,
+  "enregistrements_ecartes_doublons": 14,
+  "enregistrements_retenus": 2924,
+  "retenus_avec_avertissement": 411,
+  "entierement_conformes": 884,
+  "taux_global_conformite_pct": 27.8,
+  "definition_taux_global": "entierement conformes (retenus, sans correction ni avertissement) / total des enregistrements recus ; chaque enregistrement compte une fois"
+}

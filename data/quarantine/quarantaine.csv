@@ -1,0 +1,247 @@
+source,id_local,numero_ligne,motif_quarantaine,date,type_transaction,type_bien,region,ville,prix,surface
+plateforme,PLT-00062,62,"prix absent, illisible ou <= 0",2023-04-04,vente,Terrain,Kédougou,Salémata,à négocier,1131.9
+plateforme,PLT-00077,77,date future pour une transaction conclue,2028-12-01,vente,Appartement,Matam,Matam,64862000,78.4
+plateforme,PLT-00085,85,"prix absent, illisible ou <= 0",2025-11-11,vente,Maison,Tambacounda,Tambacounda,à négocier,163.7
+plateforme,PLT-00211,211,"surface absente, illisible ou <= 0",2020-08-07,location,Appartement,Ziguinchor,Ziguinchor,595000,
+plateforme,PLT-00222,222,"prix absent, illisible ou <= 0",2019-06-25,vente,Appartement,Dakar,Rufisque,à négocier,55.1
+plateforme,PLT-00249,249,"surface absente, illisible ou <= 0",2022-04-18,vente,Villa,Louga,Linguère,162813000,
+plateforme,PLT-00507,507,"surface absente, illisible ou <= 0",2023-09-10,vente,Appartement,Kaolack,Kaolack,85240000,
+plateforme,PLT-00676,676,"prix absent, illisible ou <= 0",2021-07-24,vente,Terrain,Fatick,Gossas,à négocier,472.4
+plateforme,PLT-00687,687,"surface absente, illisible ou <= 0",2023-12-24,vente,Appartement,Diourbel,Bambey,63774000,
+plateforme,PLT-00712,712,"prix absent, illisible ou <= 0",2023-06-27,vente,Appartement,Kaolack,Kaolack,à négocier,113.3
+plateforme,PLT-00729,729,"surface absente, illisible ou <= 0",2025-12-03,location,Maison,Saint-Louis,Podor,575000,
+plateforme,PLT-00676,862,"prix absent, illisible ou <= 0",2021-07-24,vente,Terrain,Fatick,Gossas,à négocier,472.4
+agence,AGT-00826,6,"surface absente, illisible ou <= 0",12/09/2023,,Appartement,Louga,Louga,31286000,-30
+agence,AGT-00836,16,vente ou location non interprétable,24/07/2022,,Villa,Dakar,Dakar,885000,437.9
+agence,AGT-00852,32,vente ou location non interprétable,2024-11-24,,Chambre,Kolda,Kolda,110000,26.3
+agence,AGT-00878,58,vente ou location non interprétable,2023-10-27,,Villa,Sédhiou,Bounkiling,1055000,363.8
+agence,AGT-00880,60,vente ou location non interprétable,2020-11-16,,Maison,Fatick,Kaolack-Fatick,520000,79.6
+agence,AGT-00882,62,vente ou location non interprétable,2023-03-25,,Appartement,Kédougou,Saraya,285000,171.7
+agence,AGT-00900,80,vente ou location non interprétable,2020-09-01,,Studio,Matam,Ourossogui,240000,24.7
+agence,AGT-00910,90,vente ou location non interprétable,2024-12-09,,Villa,Ziguinchor,Bignona,790000,301.7
+agence,AGT-00926,106,vente ou location non interprétable,04/03/2020,,Terrain,Tambacounda,Tambacounda,205000,652.6
+agence,AGT-00935,115,vente ou location non interprétable,11/07/2023,,Studio,Louga,Linguère,165000,32.3
+agence,AGT-00942,122,vente ou location non interprétable,2024-11-10,,Studio,Kédougou,Salémata,240000,36
+agence,AGT-00950,130,"prix absent, illisible ou <= 0",23/12/2019,,Appartement,Fatick,Kaolack-Fatick,0,66.6
+agence,AGT-00975,155,vente ou location non interprétable,2023-01-15,,Appartement,Dakar,Guédiawaye,240000,105.8
+agence,AGT-00981,161,vente ou location non interprétable,09/04/2022,,Maison,Kaolack,Guinguinéo,520000,90.7
+agence,AGT-00990,170,vente ou location non interprétable,21/02/2022,,Villa,Saint-Louis,Podor,1375000,415.6
+agence,AGT-00994,174,"vente ou location non interprétable; prix absent, illisible ou <= 0",04/02/2025,,Terrain,Kaffrine,Koungheul,0,1250.6
+agence,AGT-00996,176,vente ou location non interprétable,2020-12-05,,Appartement,Kédougou,Salémata,480000,93.7
+agence,AGT-00999,179,vente ou location non interprétable,2024-07-09,,Villa,Kédougou,Saraya,570000,446.2
+agence,AGT-01015,195,vente ou location non interprétable,07/09/2025,,Maison,Dakar,Pikine,345000,246
+agence,AGT-01044,224,"prix absent, illisible ou <= 0",02/02/2019,,Maison,Fatick,Gossas,0,188.5
+agence,AGT-01056,236,vente ou location non interprétable,07/08/2024,,Maison,Louga,Linguère,635000,208.2
+agence,AGT-01059,239,vente ou location non interprétable,2021-10-23,,Terrain,Kolda,Médina Yoro Foulah,115000,98.3
+agence,AGT-01062,242,vente ou location non interprétable,2021-10-14,,Terrain,Sédhiou,Goudomp,180000,200.8
+agence,AGT-01065,245,"surface absente, illisible ou <= 0",02/09/2018,,Appartement,Kolda,Médina Yoro Foulah,47828000,-25
+agence,AGT-01089,269,vente ou location non interprétable,2024-12-20,,Studio,Louga,Linguère,185000,52.8
+agence,AGT-01092,272,vente ou location non interprétable,2021-10-05,,Maison,Sédhiou,Bounkiling,385000,176.6
+agence,AGT-01100,280,vente ou location non interprétable,2021-03-30,,Chambre,Ziguinchor,Bignona,45000,25.3
+agence,AGT-01116,296,vente ou location non interprétable,2020-04-14,,Appartement,Diourbel,Bambey,515000,172
+agence,AGT-01129,309,vente ou location non interprétable,2021-06-09,,Villa,Ziguinchor,Oussouye,835000,217.8
+agence,AGT-01130,310,vente ou location non interprétable,2022-03-14,,Maison,Fatick,Kaolack-Fatick,285000,88.8
+agence,AGT-01132,312,vente ou location non interprétable,2025-10-30,,Studio,Diourbel,Mbacké,90000,57.6
+agence,AGT-01145,325,vente ou location non interprétable,2025-03-31,,Terrain,Louga,Linguère,55000,1475.2
+agence,AGT-01155,335,vente ou location non interprétable,2025-09-11,,Maison,Kaffrine,Koungheul,680000,165.4
+agence,AGT-01163,343,vente ou location non interprétable,2022-10-15,,Studio,Kaffrine,Koungheul,210000,40.9
+agence,AGT-01186,366,vente ou location non interprétable,04/05/2021,,Appartement,Kaffrine,Kaffrine,320000,119.9
+agence,AGT-01191,371,vente ou location non interprétable,2021-12-07,,Villa,Sédhiou,Goudomp,770000,178.4
+agence,AGT-01219,399,vente ou location non interprétable,20/08/2020,,Appartement,Kolda,Kolda,450000,110.3
+agence,AGT-01220,400,vente ou location non interprétable,2024-02-26,,Appartement,Matam,Kanel,340000,93.3
+agence,AGT-01237,417,vente ou location non interprétable,2024-08-05,,Appartement,Diourbel,Bambey,230000,108.7
+agence,AGT-01238,418,"surface absente, illisible ou <= 0",24/08/2019,,Terrain,Kédougou,Kédougou,15497000,-30
+agence,AGT-01250,430,vente ou location non interprétable,09/04/2021,,Terrain,Sédhiou,Goudomp,155000,953.9
+agence,AGT-01256,436,vente ou location non interprétable,2020-09-07,,Maison,Ziguinchor,Bignona,600000,211.7
+agence,AGT-01261,441,vente ou location non interprétable,2020-12-27,,Villa,Tambacounda,Goudiry,1425000,449
+agence,AGT-01263,443,vente ou location non interprétable,18/02/2022,,Studio,Sédhiou,Bounkiling,230000,22
+agence,AGT-01268,448,vente ou location non interprétable,11/02/2023,,Studio,Louga,Louga,115000,50.3
+agence,AGT-01289,469,vente ou location non interprétable,17/10/2023,,Maison,Saint-Louis,Saint-Louis,350000,120.2
+agence,AGT-01291,471,vente ou location non interprétable,04/12/2022,,Appartement,Fatick,Fatick,285000,160.9
+agence,AGT-01299,479,vente ou location non interprétable,27/05/2023,,Maison,Kaffrine,Koungheul,280000,241
+agence,AGT-01302,482,"vente ou location non interprétable; prix absent, illisible ou <= 0",14/10/2022,,Studio,Kolda,Médina Yoro Foulah,0,32.5
+agence,AGT-01303,483,vente ou location non interprétable,01/01/2020,,Terrain,Matam,Matam,265000,267
+agence,AGT-01313,493,vente ou location non interprétable,2021-08-19,,Chambre,Kolda,Kolda,75000,26.6
+agence,AGT-01314,494,vente ou location non interprétable,2023-04-12,,Chambre,Diourbel,Bambey,105000,24.2
+agence,AGT-01318,498,vente ou location non interprétable,2020-06-20,,Terrain,Thiès,Joal-Fadiouth,230000,239.9
+agence,AGT-01323,503,vente ou location non interprétable,09/06/2023,,Villa,Sédhiou,Sédhiou,1435000,218.4
+agence,AGT-01327,507,vente ou location non interprétable,09/08/2025,,Maison,Matam,Matam,420000,127.9
+agence,AGT-01332,512,vente ou location non interprétable,25/12/2024,,Maison,Matam,Kanel,350000,73.9
+agence,AGT-01342,522,"prix absent, illisible ou <= 0",09/04/2020,,Appartement,Matam,Ourossogui,0,52.4
+agence,AGT-01355,535,vente ou location non interprétable,2025-10-04,,Terrain,Tambacounda,Bakel,95000,135.3
+agence,AGT-01356,536,"surface absente, illisible ou <= 0",08/06/2021,,Villa,Kaolack,Kaolack,224970000,-12
+agence,AGT-01362,542,vente ou location non interprétable,08/02/2023,,Villa,Ziguinchor,Oussouye,930000,445.7
+agence,AGT-01377,557,vente ou location non interprétable,01/01/2021,,Maison,Fatick,Kaolack-Fatick,265000,241.1
+agence,AGT-01396,576,vente ou location non interprétable,17/05/2025,,Villa,Kolda,Médina Yoro Foulah,740000,286.1
+agence,AGT-01399,579,vente ou location non interprétable,2025-06-19,,Maison,Sédhiou,Goudomp,530000,76.6
+agence,AGT-01426,606,vente ou location non interprétable,2022-10-29,,Appartement,Thiès,Thiès,160000,138.2
+agence,AGT-01432,612,vente ou location non interprétable,2022-03-16,,Terrain,Kolda,Vélingara,50000,767.1
+agence,AGT-01451,631,vente ou location non interprétable,29/05/2020,,Chambre,Kaolack,Guinguinéo,100000,26.2
+agence,AGT-01456,636,vente ou location non interprétable,30/01/2024,,Local commercial,Kaolack,Nioro du Rip,1015000,259.7
+agence,AGT-01460,640,vente ou location non interprétable,2020-06-15,,Studio,Kolda,Médina Yoro Foulah,135000,45.4
+particuliers,PRT-01464,4,"surface absente, illisible ou <= 0",2019-06-29,location,Maison,Saint-Louis,Saint-Louis,490000,
+particuliers,PRT-01468,8,"surface absente, illisible ou <= 0",23/02/2023,location,Appartement,Louga,Kébémer,555000,
+particuliers,PRT-01471,11,"surface absente, illisible ou <= 0",09/03/2024,vente,Maison,Dakar,Pikine,71415000,
+particuliers,PRT-01472,12,"prix absent, illisible ou <= 0",2021-06-24,vente,Maison,Kolda,Vélingara,,60.2
+particuliers,PRT-01476,16,"surface absente, illisible ou <= 0",02/01/2025,vente,Villa,Tambacounda,Goudiry,136663000,
+particuliers,PRT-01477,17,"prix absent, illisible ou <= 0",22/04/2024,vente,Villa,Fatick,Fatick,,318.1
+particuliers,PRT-01484,24,"surface absente, illisible ou <= 0",16/01/2023,vente,Appartement,Saint-Louis,Saint-Louis,68635000,
+particuliers,PRT-01485,25,"prix absent, illisible ou <= 0",04/11/2022,location,Maison,Kaolack,Guinguinéo,,222.4
+particuliers,PRT-01496,36,"prix absent, illisible ou <= 0",2024-01-17,location,Villa,Thiès,Mbour,,427.0
+particuliers,PRT-01499,39,"prix absent, illisible ou <= 0",30/06/2018,vente,Villa,Kaolack,Nioro du Rip,,219.9
+particuliers,PRT-01503,43,"prix absent, illisible ou <= 0",24/11/2023,location,Maison,Sédhiou,Sédhiou,,198.2
+particuliers,PRT-01517,57,"prix absent, illisible ou <= 0",2023-11-19,location,Terrain,Fatick,Gossas,,754.2
+particuliers,PRT-01520,60,"surface absente, illisible ou <= 0",2024-11-02,vente,Terrain,Louga,Louga,68734000,
+particuliers,PRT-01523,63,"prix absent, illisible ou <= 0",13/01/2019,vente,Villa,Thiès,Mbour,,198.1
+particuliers,PRT-01526,66,"surface absente, illisible ou <= 0",24/10/2024,vente,Villa,Saint-Louis,Saint-Louis,428851000,
+particuliers,PRT-01527,67,"surface absente, illisible ou <= 0",14/06/2020,vente,Terrain,Thiès,Tivaouane,27665000,
+particuliers,PRT-01529,69,"prix absent, illisible ou <= 0",2021-05-30,location,Studio,Kolda,Vélingara,,22.5
+particuliers,PRT-01530,70,"prix absent, illisible ou <= 0",06/12/2023,location,Studio,Kaolack,Nioro du Rip,,24.8
+particuliers,PRT-01535,75,"surface absente, illisible ou <= 0",2020-03-07,vente,Terrain,Dakar,Keur Massar,42580000,
+particuliers,PRT-01536,76,"surface absente, illisible ou <= 0",14/07/2022,vente,Studio,Kaffrine,Kaffrine,13317000,
+particuliers,PRT-01537,77,"prix absent, illisible ou <= 0",2022-09-07,vente,Appartement,Kolda,Vélingara,,123.0
+particuliers,PRT-01545,85,"surface absente, illisible ou <= 0",25/09/2024,vente,Appartement,Sédhiou,Sédhiou,68287000,
+particuliers,PRT-01548,88,"surface absente, illisible ou <= 0",2022-12-21,vente,Terrain,Sédhiou,Sédhiou,83821000,
+particuliers,PRT-01550,90,"surface absente, illisible ou <= 0",16/07/2019,vente,Maison,Diourbel,Bambey,167356000,
+particuliers,PRT-01563,103,"prix absent, illisible ou <= 0",2019-08-24,vente,Studio,Kaffrine,Birkelane,None FCFA,32.4
+particuliers,PRT-01565,105,"surface absente, illisible ou <= 0",21/12/2020,vente,Villa,Sédhiou,Bounkiling,361348000,
+particuliers,PRT-01571,111,"surface absente, illisible ou <= 0",2022-04-08,location,Appartement,Kolda,Médina Yoro Foulah,215000,
+particuliers,PRT-01573,113,"surface absente, illisible ou <= 0",19/03/2025,vente,Maison,Kaolack,Guinguinéo,53901000,
+particuliers,PRT-01581,121,"surface absente, illisible ou <= 0",2022-05-02,vente,Appartement,Kaolack,Nioro du Rip,37701000,
+particuliers,PRT-01586,126,"surface absente, illisible ou <= 0",2019-09-06,location,Appartement,Fatick,Kaolack-Fatick,465000,
+particuliers,PRT-01592,132,"prix absent, illisible ou <= 0",2022-10-20,location,Terrain,Ziguinchor,Bignona,,1099.1
+particuliers,PRT-01593,133,"surface absente, illisible ou <= 0",29/07/2020,location,Appartement,Dakar,Dakar,735000,
+particuliers,PRT-01599,139,"prix absent, illisible ou <= 0",2021-06-02,location,Appartement,Saint-Louis,Podor,,105.0
+particuliers,PRT-01617,157,"surface absente, illisible ou <= 0",2024-07-31,vente,Maison,Sédhiou,Sédhiou,175172000 FCFA,
+particuliers,PRT-01619,159,"prix absent, illisible ou <= 0",17/04/2019,vente,Maison,Thiès,Mbour,,151.3
+particuliers,PRT-01629,169,"surface absente, illisible ou <= 0",16/04/2018,location,Terrain,Dakar,Guédiawaye,210000,
+particuliers,PRT-01630,170,"surface absente, illisible ou <= 0",12/02/2021,vente,Maison,Thiès,Tivaouane,67985000,
+particuliers,PRT-01632,172,"prix absent, illisible ou <= 0",2025-09-04,location,Studio,Thiès,Tivaouane,,33.7
+particuliers,PRT-01642,182,"prix absent, illisible ou <= 0",2022-11-25,location,Terrain,Diourbel,Bambey,,118.5
+particuliers,PRT-01644,184,"prix absent, illisible ou <= 0",2018-10-05,vente,Terrain,Thiès,Tivaouane,,1348.5
+particuliers,PRT-01646,186,"prix absent, illisible ou <= 0",23/10/2025,vente,Villa,Kaffrine,Koungheul,,248.4
+particuliers,PRT-01649,189,"prix absent, illisible ou <= 0",10/06/2023,location,Terrain,Thiès,Joal-Fadiouth,,1446.1
+particuliers,PRT-01665,205,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",27/09/2023,vente,Terrain,Kédougou,Saraya,,
+particuliers,PRT-01680,220,"surface absente, illisible ou <= 0",28/04/2023,vente,Terrain,Kédougou,Saraya,72106000,
+particuliers,PRT-01690,230,"prix absent, illisible ou <= 0",04/03/2025,vente,Terrain,Kaolack,Guinguinéo,,908.0
+particuliers,PRT-01709,249,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",05/11/2020,location,Appartement,Kaffrine,Birkelane,,
+particuliers,PRT-01712,252,"surface absente, illisible ou <= 0",20/08/2019,vente,Maison,Diourbel,Diourbel,142239000,
+particuliers,PRT-01719,259,"prix absent, illisible ou <= 0",25/09/2022,location,Villa,Kédougou,Kédougou,,161.5
+particuliers,PRT-01720,260,"prix absent, illisible ou <= 0",2020-07-09,location,Maison,Ziguinchor,Ziguinchor,,105.4
+particuliers,PRT-01721,261,"surface absente, illisible ou <= 0",08/12/2024,location,Terrain,Louga,Linguère,105000,
+particuliers,PRT-01724,264,"prix absent, illisible ou <= 0",21/11/2024,vente,Local commercial,Fatick,Gossas,,293.9
+particuliers,PRT-01727,267,"surface absente, illisible ou <= 0",30/05/2024,vente,Villa,Ziguinchor,Ziguinchor,197255000,
+particuliers,PRT-01736,276,"prix absent, illisible ou <= 0",09/03/2022,location,Appartement,Diourbel,Bambey,,84.7
+particuliers,PRT-01739,279,"prix absent, illisible ou <= 0",2021-07-09,vente,Appartement,Saint-Louis,Saint-Louis,,134.4
+particuliers,PRT-01754,294,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",2025-11-05,location,Appartement,Kaffrine,Kaffrine,,
+particuliers,PRT-01755,295,"surface absente, illisible ou <= 0",04/12/2024,vente,Maison,Kaolack,Guinguinéo,146326000,
+particuliers,PRT-01759,299,"surface absente, illisible ou <= 0",2025-11-01,vente,Terrain,Diourbel,Diourbel,51354000,
+particuliers,PRT-01761,301,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",07/07/2018,vente,Terrain,Kaolack,Kaolack,,
+particuliers,PRT-01765,305,"prix absent, illisible ou <= 0",06/10/2019,vente,Chambre,Dakar,Dakar,,12.1
+particuliers,PRT-01773,313,"prix absent, illisible ou <= 0",17/10/2025,location,Studio,Diourbel,Diourbel,,35.4
+particuliers,PRT-01774,314,"surface absente, illisible ou <= 0",14/02/2020,location,Studio,Kaffrine,Kaffrine,240000,
+particuliers,PRT-01777,317,"surface absente, illisible ou <= 0",30/09/2025,location,Villa,Matam,Kanel,1210000,
+particuliers,PRT-01778,318,"surface absente, illisible ou <= 0",03/06/2020,location,Villa,Saint-Louis,Richard-Toll,705000,quatre-vingt
+particuliers,PRT-01782,322,"prix absent, illisible ou <= 0",20/12/2025,location,Local commercial,Thiès,Joal-Fadiouth,,228.6
+particuliers,PRT-01791,331,"prix absent, illisible ou <= 0",01/06/2022,vente,Chambre,Saint-Louis,Podor,,11.1
+particuliers,PRT-01798,338,"surface absente, illisible ou <= 0",2020-12-03,vente,Appartement,Kaolack,Guinguinéo,87912000,
+particuliers,PRT-01802,342,"surface absente, illisible ou <= 0",22/08/2023,location,Chambre,Kaffrine,Birkelane,90000,quatre-vingt
+particuliers,PRT-01814,354,"surface absente, illisible ou <= 0",2019-09-17,vente,Terrain,Dakar,Dakar,20913000,
+particuliers,PRT-01816,356,"prix absent, illisible ou <= 0",09/03/2020,vente,Appartement,Thiès,Tivaouane,,70.4
+particuliers,PRT-01817,357,"surface absente, illisible ou <= 0",22/12/2018,vente,Maison,Sédhiou,Sédhiou,61716000,
+particuliers,PRT-01823,363,"surface absente, illisible ou <= 0",2019-10-11,location,Villa,Louga,Linguère,700000,
+particuliers,PRT-01831,371,"surface absente, illisible ou <= 0",2019-05-15,location,Studio,Fatick,Gossas,105000,
+particuliers,PRT-01836,376,"prix absent, illisible ou <= 0",2019-10-11,vente,Terrain,Fatick,Fatick,,1288.2
+particuliers,PRT-01838,378,"prix absent, illisible ou <= 0",14/11/2023,vente,Villa,Fatick,Gossas,,436.1
+particuliers,PRT-01842,382,"prix absent, illisible ou <= 0",11/10/2018,vente,Appartement,Diourbel,Touba,,168.5
+particuliers,PRT-01843,383,"prix absent, illisible ou <= 0",2018-01-29,location,Maison,Ziguinchor,Bignona,,87.4
+particuliers,PRT-01845,385,"surface absente, illisible ou <= 0",19/05/2018,vente,Chambre,Louga,Louga,16853000,
+particuliers,PRT-01855,395,"prix absent, illisible ou <= 0",27/05/2024,vente,Appartement,Saint-Louis,Saint-Louis,,59.0
+particuliers,PRT-01861,401,"prix absent, illisible ou <= 0",08/05/2022,vente,Studio,Kaolack,Guinguinéo,,25.8
+particuliers,PRT-01862,402,"surface absente, illisible ou <= 0",2019-10-08,vente,Studio,Dakar,Pikine,20863000,
+particuliers,PRT-01864,404,"prix absent, illisible ou <= 0",2024-01-22,location,Maison,Kolda,Médina Yoro Foulah,,84.8
+particuliers,PRT-01874,414,"surface absente, illisible ou <= 0",27/06/2019,location,Maison,Thiès,Joal-Fadiouth,795000,
+particuliers,PRT-01876,416,"prix absent, illisible ou <= 0",2020-01-20,vente,Chambre,Kaffrine,Birkelane,,29.6
+particuliers,PRT-01883,423,"surface absente, illisible ou <= 0",2021-07-27,vente,Maison,Matam,Kanel,145509000,
+particuliers,PRT-01901,441,"surface absente, illisible ou <= 0",14/06/2019,vente,Maison,Kédougou,Saraya,150291000,quatre-vingt
+particuliers,PRT-01903,443,"surface absente, illisible ou <= 0",2024-05-16,vente,Studio,Sédhiou,Sédhiou,43824000,
+particuliers,PRT-01920,460,"surface absente, illisible ou <= 0",29/09/2022,vente,Maison,Fatick,Kaolack-Fatick,103807000,
+particuliers,PRT-01924,464,"surface absente, illisible ou <= 0",06/03/2025,location,Studio,Ziguinchor,Oussouye,180000,
+particuliers,PRT-01942,482,"prix absent, illisible ou <= 0",13/08/2018,vente,Villa,Thiès,Tivaouane,,257.2
+particuliers,PRT-01945,485,"surface absente, illisible ou <= 0",27/09/2021,location,Studio,Saint-Louis,Richard-Toll,160000,
+particuliers,PRT-01952,492,"surface absente, illisible ou <= 0",03/08/2024,location,Studio,Tambacounda,Bakel,160000,quatre-vingt
+particuliers,PRT-01956,496,"surface absente, illisible ou <= 0",2023-10-25,location,Maison,Tambacounda,Goudiry,580000,
+particuliers,PRT-01962,502,"surface absente, illisible ou <= 0",2024-06-04,location,Maison,Kédougou,Salémata,755000,
+particuliers,PRT-01966,506,"prix absent, illisible ou <= 0",14/10/2022,vente,Maison,Ziguinchor,Ziguinchor,,171.3
+particuliers,PRT-01975,515,"prix absent, illisible ou <= 0",2022-03-10,vente,Terrain,Kolda,Médina Yoro Foulah,,381.2
+particuliers,PRT-01985,525,"surface absente, illisible ou <= 0",2019-11-15,vente,Villa,Dakar,Pikine,262304000,
+particuliers,PRT-01986,526,"surface absente, illisible ou <= 0",30/01/2018,vente,Maison,Thiès,Thiès,97312000,
+particuliers,PRT-01990,530,"prix absent, illisible ou <= 0",14/08/2019,vente,Appartement,Diourbel,Mbacké,,166.2
+particuliers,PRT-01992,532,"prix absent, illisible ou <= 0",2025-10-15,vente,Villa,Saint-Louis,Saint-Louis,,392.4
+particuliers,PRT-01993,533,"prix absent, illisible ou <= 0",2022-08-24,vente,Maison,Matam,Ourossogui,,98.2
+particuliers,PRT-01995,535,"surface absente, illisible ou <= 0",2018-05-22,vente,Appartement,Dakar,Rufisque,70834000,
+particuliers,PRT-01996,536,"surface absente, illisible ou <= 0",16/05/2022,vente,Maison,Matam,Matam,173078000,
+particuliers,PRT-02000,540,"surface absente, illisible ou <= 0",2023-04-28,location,Studio,Matam,Ourossogui,245000,
+particuliers,PRT-02001,541,"prix absent, illisible ou <= 0",19/06/2019,vente,Maison,Louga,Linguère,,87.2
+particuliers,PRT-02002,542,"surface absente, illisible ou <= 0",21/07/2024,vente,Studio,Tambacounda,Tambacounda,12462000,
+particuliers,PRT-02012,552,"surface absente, illisible ou <= 0",2024-05-16,vente,Appartement,Matam,Matam,39934000,
+particuliers,PRT-02018,558,"prix absent, illisible ou <= 0",19/06/2021,vente,Studio,Kaolack,Guinguinéo,,25.3
+particuliers,PRT-02020,560,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",14/12/2022,vente,Terrain,Ziguinchor,Bignona,,
+particuliers,PRT-02026,566,"surface absente, illisible ou <= 0",07/09/2018,vente,Terrain,Ziguinchor,Bignona,59097000,
+particuliers,PRT-02027,567,"surface absente, illisible ou <= 0",10/11/2023,vente,Appartement,Louga,Kébémer,58826000,
+particuliers,PRT-02030,570,"prix absent, illisible ou <= 0",2022-04-18,vente,Chambre,Diourbel,Bambey,,27.5
+particuliers,PRT-02035,575,"surface absente, illisible ou <= 0",29/12/2024,location,Villa,Louga,Linguère,515000,
+particuliers,PRT-02041,581,"surface absente, illisible ou <= 0",09/02/2021,location,Terrain,Kolda,Médina Yoro Foulah,175000,
+particuliers,PRT-02043,583,"prix absent, illisible ou <= 0",03/02/2020,vente,Maison,Ziguinchor,Ziguinchor,,123.3
+particuliers,PRT-02046,586,"prix absent, illisible ou <= 0; surface absente, illisible ou <= 0",2019-01-02,location,Maison,Kaffrine,Koungheul,None FCFA,
+particuliers,PRT-02050,590,"prix absent, illisible ou <= 0",2019-11-10,vente,Terrain,Thiès,Mbour,,516.1
+particuliers,PRT-02054,594,"surface absente, illisible ou <= 0",2024-04-11,vente,Terrain,Fatick,Kaolack-Fatick,87172000,
+particuliers,PRT-02074,614,"prix absent, illisible ou <= 0",22/10/2022,location,Terrain,Kolda,Médina Yoro Foulah,,241.4
+particuliers,PRT-02091,631,"surface absente, illisible ou <= 0",2024-11-14,vente,Studio,Sédhiou,Bounkiling,18182000 FCFA,
+particuliers,PRT-02093,633,"prix absent, illisible ou <= 0",2024-04-25,vente,Studio,Kaffrine,Birkelane,,25.4
+particuliers,PRT-02113,653,"prix absent, illisible ou <= 0",02/02/2024,location,Maison,Matam,Matam,,99.8
+particuliers,PRT-02118,658,"surface absente, illisible ou <= 0",14/10/2019,vente,Appartement,Kédougou,Saraya,57035000 FCFA,
+particuliers,PRT-02122,662,"prix absent, illisible ou <= 0",2021-11-04,vente,Chambre,Dakar,Pikine,,26.1
+particuliers,PRT-02123,663,"surface absente, illisible ou <= 0",2018-03-18,location,Appartement,Saint-Louis,Saint-Louis,220000,
+particuliers,PRT-02124,664,"surface absente, illisible ou <= 0",19/10/2019,vente,Maison,Saint-Louis,Richard-Toll,88150000,
+particuliers,PRT-02125,665,"surface absente, illisible ou <= 0",07/12/2023,vente,Maison,Louga,Louga,89136000,
+particuliers,PRT-02135,675,"surface absente, illisible ou <= 0",12/11/2020,vente,Terrain,Sédhiou,Bounkiling,61359000,
+particuliers,PRT-02137,677,"prix absent, illisible ou <= 0",2018-02-19,location,Villa,Saint-Louis,Podor,,151.3
+particuliers,PRT-02139,679,"prix absent, illisible ou <= 0",2020-12-08,vente,Maison,Kaffrine,Kaffrine,,175.3
+particuliers,PRT-02140,680,"surface absente, illisible ou <= 0",11/11/2023,vente,Studio,Kédougou,Kédougou,17504000,
+particuliers,PRT-02148,688,"surface absente, illisible ou <= 0",2021-09-11,vente,Villa,Kolda,Médina Yoro Foulah,395069000,
+particuliers,PRT-02154,694,"surface absente, illisible ou <= 0",2020-04-15,vente,Villa,Fatick,Fatick,104282000,
+particuliers,PRT-02162,702,"surface absente, illisible ou <= 0",2023-01-13,vente,Villa,Kaffrine,Koungheul,239883000,
+particuliers,PRT-02167,707,"prix absent, illisible ou <= 0",13/12/2023,vente,Chambre,Diourbel,Bambey,,11.7
+particuliers,PRT-02169,709,"surface absente, illisible ou <= 0",2025-08-19,vente,Appartement,Tambacounda,Goudiry,99378000,
+particuliers,PRT-02186,726,"surface absente, illisible ou <= 0",2025-02-16,vente,Terrain,Saint-Louis,Podor,49714000,
+notaires,NOT-02208,17,"prix absent, illisible ou <= 0",2021-03-13,,Appartement,Fatick,Kaolack-Fatick,,73.3
+notaires,NOT-02245,54,"prix absent, illisible ou <= 0",2024-04-02,,Appartement,Saint-Louis,Podor,,110.4
+notaires,NOT-02250,59,"prix absent, illisible ou <= 0",2022-09-29,,Studio,Louga,Louga,,44.6
+notaires,NOT-02285,94,"prix absent, illisible ou <= 0",2021-01-11,,Terrain,Dakar,Pikine,,1498.0
+notaires,NOT-02314,123,"prix absent, illisible ou <= 0",2021-01-29,,Villa,Diourbel,Mbacké,,364.1
+notaires,NOT-02330,139,"prix absent, illisible ou <= 0",2024-02-25,,Maison,Kaolack,Guinguinéo,,66.9
+notaires,NOT-02361,170,"prix absent, illisible ou <= 0",2023-06-24,,Maison,Diourbel,Diourbel,,85.0
+notaires,NOT-02362,171,"prix absent, illisible ou <= 0",2019-05-01,,Appartement,Sédhiou,Goudomp,,160.9
+notaires,NOT-02394,203,date absente ou impossible,32/13/2024,,Maison,Kédougou,Kédougou,69528000.0,238.3
+notaires,NOT-02396,205,date absente ou impossible,32/13/2024,,Studio,Kolda,Vélingara,30816000.0,54.5
+notaires,NOT-02400,209,"prix absent, illisible ou <= 0",2018-11-16,,Villa,Louga,Kébémer,,214.8
+notaires,NOT-02428,237,"prix absent, illisible ou <= 0",2020-03-14,,Maison,Ziguinchor,Ziguinchor,,211.9
+notaires,NOT-02441,250,date absente ou impossible,32/13/2024,,Villa,Ziguinchor,Ziguinchor,424671000.0,149.4
+notaires,NOT-02474,283,"prix absent, illisible ou <= 0",2024-05-28,,Appartement,Louga,Louga,,153.9
+notaires,NOT-02475,284,"prix absent, illisible ou <= 0",2024-07-24,,Villa,Saint-Louis,Podor,,121.2
+notaires,NOT-02484,293,"prix absent, illisible ou <= 0",2024-10-02,,Maison,Kédougou,Kédougou,,115.5
+notaires,NOT-02556,365,"prix absent, illisible ou <= 0",2022-01-07,,Studio,Kolda,Kolda,,29.9
+notaires,NOT-02559,368,date absente ou impossible,32/13/2024,,Maison,Dakar,Pikine,179791000.0,207.9
+notaires,NOT-02565,374,date absente ou impossible,32/13/2024,,Villa,Ziguinchor,Ziguinchor,266366000.0,180.3
+notaires,NOT-02584,393,date absente ou impossible,32/13/2024,,Maison,Louga,Kébémer,94166000.0,96.3
+historique,HIS-0072,72,"prix absent, illisible ou <= 0",2019-10-16,,Terrain,Ziguinchor,Bignona,,190.8
+historique,HIS-0128,128,"prix absent, illisible ou <= 0",2018-05-16,,Terrain,Saint-Louis,Podor,,"654,4"
+historique,HIS-0251,251,"prix absent, illisible ou <= 0",27/03/2018,,Studio,Thiès,Mbour,,43.7
+historique,HIS-0269,269,"prix absent, illisible ou <= 0",2018-09-21,,Appartement,Dakar,Keur Massar,,148.7
+historique,HIS-0325,325,"prix absent, illisible ou <= 0",2019-04-17,,APPARTEMENT,Thiès,Thiès,,67.2
+historique,HIS-0372,372,"prix absent, illisible ou <= 0",2018-08-20,,Studio,Saint-Louis,Saint-Louis,,40.1
+historique,HIS-0423,423,"prix absent, illisible ou <= 0",12/12/2019,,LOCAL COMMERCIAL,Louga,Linguère,,121.9
+historique,HIS-0430,430,"prix absent, illisible ou <= 0",2019-09-02,,Local commercial,Kaolack,Kaolack,,106.9
+historique,HIS-0478,478,"prix absent, illisible ou <= 0",02/12/2018,,LOCAL COMMERCIAL,Diourbel,Bambey,,"52,3"
+historique,HIS-0506,506,"prix absent, illisible ou <= 0",2018-07-22,,Maison,Matam,Ourossogui,,208.8
