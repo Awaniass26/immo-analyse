@@ -1,6 +1,7 @@
 """Point d'entrée : lance tout le pipeline, de bout en bout."""
 
 from src import config
+from src.analysis.profilage import ecrire_profilage
 from src.analysis.rapport import calculer_indicateurs, ecrire_rapports, tableau_des_regles
 from src.analysis.statistiques import ajouter_prix_m2, resume_par
 from src.export import exporter_propres, exporter_quarantaine
@@ -35,6 +36,8 @@ def main():
     motifs = quarantaine["motif_quarantaine"].value_counts().rename("nombre")
     ecrire_rapports(indicateurs, tableau_des_regles(resultats), motifs,
                     config.DOSSIER_RAPPORTS)
+
+    ecrire_profilage(validees, config.DOSSIER_RAPPORTS)
 
     # 6. Exports
     exporter_propres(retenues, config.DOSSIER_PROPRE)
