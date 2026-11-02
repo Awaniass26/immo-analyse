@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Artefacts générés
+MODULE02/models/*.joblib
+MODULE02/reports/figures/
+MODULE02/reports/eda_summary.json
+MODULE02/sortie/prepared_*.csv

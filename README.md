@@ -1,107 +1,131 @@
 # ImmoAnalyse
 
-Pipeline Python qui importe 5 sources immobilières hétérogènes (CSV, Excel, JSON),
-contrôle leur qualité, corrige ce qui est sûr, met le reste en quarantaine et
-produit des données propres avec un rapport de qualité chiffré.
+Projet fil rouge de data science sur des annonces immobilières synthétiques
+inspirées du contexte sénégalais. Le but est de suivre une chaîne complète et
+reproductible : des fichiers bruts jusqu'à un jeu de données préparé pour un
+futur modèle de Machine Learning.
 
-> Données **synthétiques** inspirées du contexte sénégalais. Elles ne représentent
-> pas des transactions réelles et ne servent pas à estimer les prix du marché.
+> Les données sont synthétiques : elles ne représentent pas des transactions
+> réelles et ne permettent pas d'estimer les prix du marché.
 
-## Installation
+## Parcours du projet
 
-```bash
-python -m venv .venv
-# Windows : .venv\Scripts\activate      Mac/Linux : source .venv/bin/activate
-pip install -r requirements.txt
-```
+Le projet est **un seul dépôt composé de modules successifs**, pas deux projets
+indépendants.
 
-Placer les 5 fichiers sources dans `data/raw/` et les 3 référentiels dans
-`data/referentiels/`. Les fichiers sources ne sont **jamais modifiés**.
+1. **Module 1 — Bases Python et qualité des données** : charge les cinq formats
+   de sources, harmonise les colonnes, nettoie et valide les valeurs, met les
+   lignes bloquantes en quarantaine, repère les doublons, puis exporte le jeu
+   propre et les rapports qualité.
+2. **Module 2 — Analyse et préparation** : lit le jeu propre du module 1 (sans
+   relire ni recopier les sources), explore les distributions et relations,
+   produit des graphiques, sépare train/validation/test, puis ajuste un pipeline
+   sklearn de préparation uniquement sur train.
+3. **Modules suivants** : réutiliseront les ensembles préparés et le pipeline
+   sérialisé pour entraîner, évaluer, améliorer et déployer des modèles.
 
-## Exécution
-
-```bash
-python -m src.main      # lance tout le pipeline
-python -m pytest        # lance les tests
-jupyter notebook        # puis ouvrir notebooks/01_exploration.ipynb
-```
+Le point de passage entre les deux premiers modules est
+`MODULE01/data/processed/donnees_propres.csv`. Les sources et référentiels
+canoniques sont stockés une seule fois dans `MODULE01/data/`.
 
 ## Structure
 
-| Dossier / fichier | Rôle |
-|---|---|
-| `src/config.py` | chemins, listes autorisées, seuils (aucun seuil dans le code) |
-| `src/loaders/` | lecture des 5 sources, noms de colonnes communs, provenance |
-| `src/processing/` | conversion des prix, surfaces, dates, catégories, doublons |
-| `src/validation/` | règles métier (classe `RegleValidation`) |
-| `src/analysis/` | indicateurs de qualité, rapports, statistiques |
-| `src/export.py` | fichiers de sortie |
-| `data/processed/` | `donnees_propres.csv` et `.json` |
-| `data/quarantine/` | `quarantaine.csv` (avec motif), `doublons_ecartes.csv` |
-| `reports/` | `quality_report.json`, `quality_summary.csv`, `rapport_qualite.md` |
-| `tests/` | 54 tests (cas conformes, invalides et limites) |
+```text
+MODULE01/
+  data/                 sources, référentiels, données propres et quarantaine
+  notebooks/            exploration du module 1
+  reports/               rapports de qualité
+  src/                   chargement, nettoyage, validation, analyse, exports
+  tests/                 tests unitaires du module 1
+MODULE02/
+  docs/                  décisions et règles métier
+  models/                pipeline de préparation sérialisé
+  notebooks/             exploration et préparation du module 2
+  reports/               figures et résumé EDA
+  src/                   lecture du résultat module 1, EDA, features, pipeline
+  sortie/                ensembles préparés train/validation/test
+  tests/                 tests unitaires du module 2
+run_project.py            lance le module 1 puis le module 2
+```
 
-## Déroulement du pipeline
+Les scripts et notebooks du module 2 pointent vers les sources et référentiels
+du module 1. Ne crée pas une deuxième copie des mêmes fichiers dans `MODULE02`.
 
-1. Chargement des 5 sources (tout en texte, aucune perte).
-2. Nettoyage : colonnes propres + un état par champ (`ok`, `corrige`, `erreur`, `manquant`).
-3. Validation : 17 règles (7 bloquantes, 10 avertissements).
-4. Quarantaine des lignes qui violent une règle bloquante, avec motif.
-5. Doublons exacts (écartés), doublons probables (signalés), conflits d'identifiants.
-6. Indicateurs, rapports, exports et statistiques.
+## Installation (Windows PowerShell)
 
-## Règles métier
+Depuis la racine du dépôt :
 
-- **Bloquantes (quarantaine)** : identifiant absent, vente/location non interprétable,
-  prix absent ou ≤ 0, surface absente ou ≤ 0, date absente ou impossible,
-  date future pour une transaction conclue, type de bien hors référentiel.
-- **Avertissements (on garde et on signale)** : surface ou prix atypique, loyer atypique,
-  périodicité inconnue, hors fourchette du type de bien, ville inconnue, ville et région
-  incompatibles, trop de chambres, salles de bain > chambres + 2.
-- Les seuils sont dans `src/config.py`.
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
 
-## Décisions et justifications
+## Exécution
 
-(À réécrire avec tes mots, une fois les points 3 à 8 compris.)
+Lancer toute la chaîne dans le bon ordre :
 
-1. **Notaires et historique = ventes.** Ces sources n'ont pas de colonne vente/location ;
-   un acte notarié et une `DateVente` correspondent à une vente conclue.
-2. **Statut `Disponible` (agence) en quarantaine.** Il ne dit pas s'il s'agit d'une vente
-   ou d'une location, et le cahier interdit de deviner. `Loué` donne location ;
-   `Vendu` et `En vente` donnent vente.
-3. **Dates avec `/` lues JJ/MM/AAAA.** Les sources sont francophones ; la convention est
-   documentée et ces dates sont marquées `corrige`.
-4. **`1,250` est ambigu.** Une virgule suivie de trois chiffres peut être un séparateur de
-   milliers ou une décimale : la surface est marquée `ambigu` et envoyée en quarantaine.
-   Une virgule suivie d'un ou deux chiffres (`102,6`) est lue comme décimale.
-5. **Valeurs illisibles non devinées.** `à négocier`, `quatre-vingt` et `None FCFA`
-   donnent `erreur` et non un chiffre inventé.
-6. **Loyers sans périodicité.** Seule la plateforme indique `FCFA/mois`. Pour les autres
-   locations, la périodicité reste inconnue (avertissement) et la règle sur les loyers
-   est « non évaluable ».
-7. **Doublons exacts écartés, doublons probables seulement signalés.** Critères : même
-   ville, même type, même transaction, sources différentes, surface à 2 % et prix à 5 %
-   près, score de similarité ≥ 0,75. Rien n'est fusionné sans preuve.
-8. **Données brutes préservées.** Les colonnes d'origine restent à côté des colonnes propres.
-9. **Les prix de vente sont des prix demandés** (annonces), pas des prix de transaction.
+```powershell
+python run_project.py
+```
 
-## Résultats (dernier lancement)
+Lancer une étape séparément :
 
-| Indicateur | Valeur |
-|---|---|
-| Enregistrements reçus | 3184 |
-| En quarantaine | 246 |
-| Doublons exacts écartés | 14 |
-| Retenus | 2924 |
-| Entièrement conformes | 884 |
-| Taux global de conformité | 27,8 % |
+```powershell
+python -m MODULE01.src.main
+python -m MODULE02.src.run_pipeline
+```
 
-Le taux global = entièrement conformes / reçus ; une ligne corrigée n'est pas
-« entièrement conforme ». Détail complet dans `reports/rapport_qualite.md`.
+Le module 2 nécessite d'abord la sortie du module 1. Pour relancer seulement
+l'analyse, vérifie que `MODULE01/data/processed/donnees_propres.csv` existe et
+correspond aux données courantes.
 
-## Limites
+Ouvrir les notebooks depuis la racine du dépôt :
 
-- Données synthétiques, seuils pédagogiques et non officiels.
-- Doublons probables : seuils à calibrer sur des cas réels.
-- Périodicité des loyers inconnue pour la majorité des locations.
-- Le prix au m² n'est calculé que sur les ventes.
+```powershell
+jupyter notebook
+```
+
+Puis ouvrir `MODULE01/notebooks/01_exploration.ipynb` ou
+`MODULE02/notebooks/02_preparation_analyse.ipynb`.
+
+## Sorties principales
+
+- Module 1 : `MODULE01/data/processed/`, `MODULE01/data/quarantine/` et
+  `MODULE01/reports/`.
+- Module 2 : `MODULE02/reports/figures/`, `MODULE02/reports/eda_summary.json`,
+  `MODULE02/sortie/prepared_train.csv`,
+  `MODULE02/sortie/prepared_validation.csv`,
+  `MODULE02/sortie/prepared_test.csv` et
+  `MODULE02/models/pipeline_preparation.joblib`.
+
+Les CSV préparés incluent `prix_log` comme cible, mais cette cible n'est pas une
+feature d'entrée. `source` et `id_local` sont conservés comme métadonnées de
+traçabilité, pas comme variables d'entraînement.
+
+## Décisions de préparation
+
+- Les lignes invalides selon les règles bloquantes sont isolées au module 1 ;
+  les avertissements sont conservés et signalés.
+- Les données propres sont le seul contrat d'entrée du module 2 : le module 2
+  ne refait pas un second nettoyage divergent.
+- La cible explorée est `log(prix)` afin de réduire l'asymétrie potentielle des
+  prix. Les métriques mesurées sont enregistrées dans le rapport EDA.
+- Le test de tendance de Mann-Kendall choisit le split : split chronologique si
+  `p < 0,05`, sinon split aléatoire reproductible (graine 42). Le ratio visé est
+  70/15/15.
+- L'imputation, le one-hot encoding et la standardisation sont ajustés sur
+  train seulement. Validation et test ne servent pas à apprendre les
+  paramètres du préprocesseur.
+- `prix_m2`, les statuts postérieurs à l'observation et les identifiants de
+  source ne sont pas utilisés comme features ; ils risquent de créer une fuite
+  ou un signal artificiel.
+
+Les justifications détaillées et les résultats de référence sont dans
+`MODULE02/docs/justifications.md`.
+
+## Vérification
+
+```powershell
+python -m pytest -q
+```

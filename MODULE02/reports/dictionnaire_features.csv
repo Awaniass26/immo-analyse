@@ -1,0 +1,11 @@
+feature,type,description,decision_fuite
+type_transaction,categorielle,Vente ou location,conserver
+categorie,categorielle,Type de bien normalise,conserver
+region,categorielle,Region geographique,conserver
+surface_log,numerique,Logarithme de 1 plus la surface en m2,conserver
+prix_log,cible,Logarithme naturel du prix FCFA,cible uniquement
+prix,numerique,Prix original en FCFA,exclure des entrees cible directe
+prix_m2,numerique,Prix rapporte a la surface,exclure fuite de la cible
+statut,categorielle,Statut de l annonce ou de la transaction,exclure risque de fuite temporelle
+source,categorielle,Source de collecte,exclure metadonnees de provenance
+id_local,identifiant,Identifiant de ligne dans la source,exclure identifiant non generalisable
