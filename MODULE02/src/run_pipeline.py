@@ -72,15 +72,17 @@ def _evaluer_candidates(
         )
         resultats.append({
             "candidate": nom,
-            "r2_moyen_cv": float(scores.mean()),
-            "ecart_type_cv": float(scores.std()),
+            "r2_moyen_cv": round(float(scores.mean()), 8),
+            "ecart_type_cv": round(float(scores.std()), 8),
         })
 
     tableau = pd.DataFrame(resultats)
     baseline = tableau.loc[
         tableau["candidate"] == "categorie", "r2_moyen_cv"
     ].iloc[0]
-    tableau["gain_vs_categorie"] = tableau["r2_moyen_cv"] - baseline
+    tableau["gain_vs_categorie"] = (
+        tableau["r2_moyen_cv"] - baseline
+    ).round(8)
     tableau["decision"] = "à réévaluer selon le cas d'usage"
     tableau.loc[
         tableau["candidate"].isin({"categorie", "surface_log"}),
