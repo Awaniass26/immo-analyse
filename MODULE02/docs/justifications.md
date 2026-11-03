@@ -1,108 +1,80 @@
-# Décisions et consignes de préparation — ImmoAnalyse
+# Décisions et résultats — Module 2
 
-Ce document explique les choix du module 2 et indique où vérifier les résultats.
-Les mesures de référence viennent des données synthétiques actuellement
-présentes dans `MODULE01/data/processed/donnees_propres.csv`. Elles changent si
-les données ou les règles de nettoyage changent.
+Les chiffres ci-dessous sont produits par `python -m MODULE02.src.run_pipeline`
+à partir des cinq sources brutes et des référentiels en lecture seule. Les
+sorties propres du module 1 ne sont pas utilisées.
 
-## 1. Contrat entre les modules
+## 1. Séparation des modules
 
-Le module 1 est l'unique étape qui lit les sources brutes et qui applique le
-nettoyage et les règles qualité. Le module 2 charge son export propre, adapte
-les noms de colonnes à son vocabulaire d'analyse, puis travaille sur ce même
-jeu. Cela évite de produire deux versions contradictoires des données.
+Le module 2 possède ses propres chargeurs, règles de nettoyage, rapports,
+figures, split et pipeline. Il lit les fichiers canoniques dans
+`MODULE01/data/raw/` et `MODULE01/data/referentiels/` sans les modifier. Il ne
+importe aucune fonction du module 1 et peut être exécuté seul.
 
-## 2. Distribution des prix et EDA
+## 2. Nettoyage et qualité
 
-- Comparer l'asymétrie de `prix` et de `log(prix)` avec
-  `stats_eda.comparer_prix_log`.
-- Examiner les relations prix/surface globalement et par catégorie avant
-  d'interpréter une corrélation agrégée (risque de paradoxe de Simpson).
-- Examiner la tendance des prix médians annuels avec le test de Mann-Kendall.
-- Les six graphiques sont écrits dans `MODULE02/reports/figures/`.
-- Les valeurs calculées sont consignées dans `MODULE02/reports/eda_summary.json`.
+Le détail actualisé est dans `MODULE02/sortie/rapport_qualite.md`.
 
-Sur le jeu actuel, l'asymétrie passe de `1.893` pour le prix brut à `-1.522`
-pour `log(prix)`. La valeur absolue diminue, mais la distribution transformée
-reste asymétrique : le logarithme ne rend pas les prix normalement distribués.
-Cette transformation reste la cible pédagogique initiale ; elle devra être
-comparée à une cible non transformée lors de l'évaluation des modèles.
+- Les valeurs qui ne peuvent pas être converties de manière fiable sont mises
+  en quarantaine ; une valeur incertaine n'est pas devinée.
+- Les dates `JJ/MM/AAAA`, les nombres avec séparateurs explicites, les suffixes
+  `FCFA`/`millions`, les synonymes de catégories et les noms géographiques
+  reconnus sont normalisés.
+- Les prix ou surfaces non positifs, les dates impossibles, les identifiants
+  absents, les transactions ambiguës et les dates futures de transactions
+  conclues sont bloquants.
+- Les valeurs extrêmes et les incohérences géographiques sont conservées avec
+  avertissement.
+- Les doublons exacts et les identifiants répétés dans une même source sont
+  écartés avant le split. Les doublons probables entre sources ne sont jamais
+  fusionnés automatiquement.
 
-La corrélation de Spearman prix/surface vaut `0.318` globalement, alors que les
-corrélations par catégorie sont proches de zéro ou négatives (de `-0.100` à
-`0.018`). L'association globale ne décrit donc pas correctement chaque
-catégorie. C'est un signal de confusion par catégorie, pas une preuve à elle
-seule d'un paradoxe de Simpson strict.
+## 3. Exploration
 
-Avec la version actuelle des données, Mann-Kendall donne `p = 0.4767` : aucune
-tendance temporelle significative n'est détectée au seuil de 5 %. Le script
-choisit donc le split aléatoire. Ce résultat décrit ce jeu synthétique, il ne
-prouve pas l'absence de tendance dans un futur jeu réel.
+Le rapport `MODULE02/reports/eda_summary.json` contient les asymétries, les
+corrélations, les tests et la tendance temporelle. Les statistiques par source
+sont dans `stats_descriptives_par_source.csv` et les types/manquants dans
+`types_par_source.csv`.
 
-## 2.1 Résultats qualité du module 1
+Les figures V1 à V6 sont dans `MODULE02/reports/figures/`. Elles couvrent la
+distribution du prix, le prix par catégorie, l'association prix/surface,
+les corrélations numériques, le bilan du nettoyage et la comparaison des
+sources. Les associations globales et par catégorie sont interprétées comme
+des corrélations, pas comme des relations causales.
 
-Le rapport qualité de référence indique 3 184 lignes reçues, 246 en
-quarantaine, 14 doublons exacts écartés et 2 924 lignes retenues, dont 411 avec
-avertissement. Le taux de conformité complète est de 27,8 %. Il mesure les
-lignes sans correction ni avertissement par rapport au total reçu : ce n'est
-pas le taux de lignes conservées.
+Le test de Mann-Kendall porte sur le prix médian par année. Le split
+chronologique est choisi si `p < 0,05`; sinon, le split aléatoire stratifié par
+catégorie utilise la graine 42. Une tendance non significative n'est pas une
+preuve d'absence de tendance dans d'autres données.
 
-## 3. Split train / validation / test
+## 4. Features et prévention des fuites
 
-- Répartition visée : 70 % / 15 % / 15 %.
-- Si le test de tendance est significatif (`p < 0.05`), le split est
-  chronologique afin que validation et test soient postérieurs à train.
-- Sinon, le split est aléatoire avec `random_state = 42` pour être reproductible.
-- Si le test ne peut pas être calculé faute d'années suffisantes, le script
-  utilise le split aléatoire ; cette limite doit être mentionnée dans l'analyse.
-- Les sorties sont `prepared_train.csv`, `prepared_validation.csv` et
-  `prepared_test.csv` dans `MODULE02/sortie/`.
-- Sur le jeu courant, cela donne respectivement 2 046, 439 et 439 lignes.
+Le pipeline final utilise `type_transaction`, `categorie`, `region` et
+`surface_log`. Le prix n'est jamais une entrée du pipeline : la cible est
+`log(prix)`. `statut`, `source`, `id_local`, `commune` et les colonnes propres à
+une seule source ne sont pas utilisées comme features.
 
-Le découpage est effectué avant l'ajustement des transformations. Aucune
-information de validation ou de test ne sert à apprendre une médiane, une
-modalité ou une échelle.
+`reports/feature_cv.csv` compare en validation croisée sur le train la
+catégorie de base à `region`, `surface_log`, `annee`, `source` et `prix_m2`.
+Le résultat est calculé sur ce jeu synthétique et ne constitue pas un score de
+production. `source` est testée à titre pédagogique, puis exclue parce qu'elle
+représente le flux de collecte. `prix_m2` est calculé à partir de la cible et
+est exclu même si son score est élevé. `reports/leakage_check.json` confirme
+numériquement l'identité
+`log(prix_m2) + log(surface) = log(prix)`.
 
-## 4. Choix des features et prévention des fuites
+## 5. Split et réutilisation
 
-| Variable | Décision | Justification |
-|---|---|---|
-| `type_transaction`, `categorie`, `region` | Conservées | Informations disponibles au moment de l'estimation. |
-| `surface_log` | Conservée | Transformation de `surface` pour réduire l'influence des grandes surfaces. |
-| `prix` | Cible uniquement | La cible ne doit jamais être incluse dans les entrées. |
-| `prix_log` | Cible exportée uniquement | Le logarithme du prix est la variable à prédire, pas une feature. |
-| `prix_m2`, ratios calculés à partir du prix | Exclus | Ils contiennent directement la cible : fuite de type 1. |
-| `statut` | Exclu | Peut être connu après la mise en vente ou la transaction : fuite temporelle. |
-| `source`, `id_local` | Métadonnées uniquement | Identifient la provenance ou la ligne, et ne généralisent pas comme attributs du bien. |
-| `commune`, `quartier`, `description`, `date_expiration` | Exclues du premier pipeline | Variables très cardinales, textuelles ou indisponibles au moment de la prédiction ; à réévaluer avec une validation dédiée. |
+Le résumé par source et catégorie est dans `reports/split_summary.json`.
+L'intersection des identifiants entre les ensembles est vérifiée avant
+l'export ; le test est réservé à l'évaluation finale et n'est pas utilisé pour
+la comparaison des features. La graine du split est `42`.
 
-Le choix d'exclure une variable doit être réexaminé pour chaque cas d'usage :
-la disponibilité réelle de la donnée au moment de la prédiction est le critère
-central.
-
-## 5. Prétraitement réutilisable
-
-`pipeline.py` applique :
-
-1. Imputation des catégories par la modalité la plus fréquente.
-2. One-hot encoding avec tolérance aux catégories inconnues.
-3. Imputation numérique par la médiane.
-4. Standardisation de `surface_log`.
-
-Le pipeline sklearn est ajusté uniquement sur train, enregistré sous
-`MODULE02/models/pipeline_preparation.joblib`, puis appliqué séparément aux
-trois ensembles. Le module 2 prépare les données ; il n'entraîne pas encore de
-modèle prédictif. L'entraînement, le choix des métriques et l'évaluation
-relèvent des modules suivants.
-
-## 6. Reproduction et contrôle
-
-À la racine du dépôt :
-
-```powershell
-python run_project.py
-python -m pytest -q
-```
-
-Le premier script exécute les modules dans l'ordre et actualise les rapports,
-les figures, les ensembles préparés et le pipeline sérialisé.
+Les transformations apprises (imputation, one-hot encoding et standardisation)
+sont ajustées uniquement sur le train. Le préprocesseur est sérialisé dans
+`MODULE02/models/pipeline_preparation.joblib`, rechargé puis essayé sur une
+ligne de chacune des cinq sources. Ce fichier ne contient pas de modèle
+prédictif entraîné ; les modèles de validation croisée sont temporaires. Les
+résultats sont dans
+`reports/pipeline_checks.json`; sa structure détaillée est décrite dans
+[`pipeline.md`](./pipeline.md).

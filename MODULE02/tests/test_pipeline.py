@@ -8,7 +8,7 @@ from MODULE02.src.pipeline import construire_pipeline, preparer_features
 from MODULE02.src.run_pipeline import separer_ensembles
 
 
-def test_loader_adapts_module1_schema(tmp_path, monkeypatch):
+def test_loader_adapts_module2_schema(tmp_path, monkeypatch):
     source = tmp_path / "donnees_propres.csv"
     pd.DataFrame({
         "transaction": ["vente"],
@@ -19,9 +19,15 @@ def test_loader_adapts_module1_schema(tmp_path, monkeypatch):
         "surface_m2": [125.0],
         "ville": ["Dakar"],
     }).to_csv(source, index=False)
-    monkeypatch.setattr(io_sources.C, "F_DONNEES_MODULE01", source)
+    avertissements = tmp_path / "avertissements.csv"
+    pd.DataFrame(columns=[
+        "id_local", "source", "date", "transaction", "type_bien",
+        "region", "ville", "prix_fcfa", "surface_m2",
+    ]).to_csv(avertissements, index=False)
+    monkeypatch.setattr(io_sources.C, "F_DONNEES_PROPRES", source)
+    monkeypatch.setattr(io_sources.C, "F_AVERTISSEMENTS", avertissements)
 
-    df = io_sources.lire_donnees_module01()
+    df = io_sources.lire_donnees_module02()
 
     assert df.loc[0, "type_transaction"] == "vente"
     assert df.loc[0, "categorie"] == "Maison"
@@ -86,6 +92,84 @@ def test_warning_does_not_remove_rows():
     assert len(toutes) == 2
     assert len(averties) == 1
     assert toutes.loc[0, "avertissements"] == "surface_tres_petite"
+
+
+def test_module2_clean_exports_its_own_outputs(tmp_path, monkeypatch):
+    sortie = tmp_path / "sortie"
+    monkeypatch.setattr(clean.C, "OUT_DIR", sortie)
+    monkeypatch.setattr(
+        clean.C,
+        "F_DONNEES_PROPRES",
+        sortie / "donnees_propres.csv",
+    )
+    monkeypatch.setattr(clean.C, "F_QUARANTAINE", sortie / "quarantine.csv")
+    monkeypatch.setattr(
+        clean.C,
+        "F_AVERTISSEMENTS",
+        sortie / "avertissements.csv",
+    )
+    monkeypatch.setattr(
+        clean.C,
+        "F_RAPPORT_QUALITE",
+        sortie / "rapport_qualite.md",
+    )
+    brut = pd.DataFrame([
+        {
+            "id_local": "A1",
+            "source": "agence",
+            "date": "2024-01-01",
+            "type_transaction": "vente",
+            "categorie": "Maison",
+            "region": "Dakar",
+            "commune": "Dakar",
+            "prix": "100000000",
+            "surface": "3",
+            "chambres": "3",
+            "sdb": "2",
+            "statut": "En vente",
+        },
+        {
+            "id_local": None,
+            "source": "particuliers",
+            "date": "32/13/2024",
+            "type_transaction": None,
+            "categorie": "Maison",
+            "region": "Dakar",
+            "commune": "Dakar",
+            "prix": "à négocier",
+            "surface": "quatre-vingt",
+            "chambres": None,
+            "sdb": None,
+            "statut": "À confirmer",
+        },
+    ])
+
+    propres = clean.nettoyer_et_exporter(brut)
+
+    assert len(propres) == 1
+    assert pd.read_csv(sortie / "quarantine.csv").shape[0] == 1
+    lignes_propres = pd.read_csv(sortie / "donnees_propres.csv")
+    lignes_averties = pd.read_csv(sortie / "avertissements.csv")
+    assert lignes_propres.empty
+    assert len(lignes_averties) == 1
+    cle_propre = set(zip(
+        lignes_propres["source"],
+        lignes_propres["numero_ligne"],
+    ))
+    cle_avertie = set(zip(
+        lignes_averties["source"],
+        lignes_averties["numero_ligne"],
+    ))
+    assert not cle_propre & cle_avertie
+    assert (sortie / "rapport_qualite.md").exists()
+
+
+def test_parsers_reject_ambiguous_values_and_convert_explicit_units():
+    assert clean.parser_prix("147.52 millions") == pytest.approx(147_520_000)
+    assert pd.isna(clean.parser_prix("à négocier"))
+    assert clean.parser_surface("367,4") == pytest.approx(367.4)
+    assert pd.isna(clean.parser_surface("1,250"))
+    assert pd.isna(clean.parser_date("32/13/2024"))
 
 
 def test_preparation_pipeline_can_be_serialized(tmp_path):

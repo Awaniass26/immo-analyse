@@ -1,0 +1,21 @@
+{
+  "agence": {
+    "lignes_transformees": 1
+  },
+  "historique": {
+    "lignes_transformees": 1
+  },
+  "notaires": {
+    "lignes_transformees": 1
+  },
+  "particuliers": {
+    "lignes_transformees": 1
+  },
+  "plateforme": {
+    "lignes_transformees": 1
+  },
+  "non_fuite_scaler": {
+    "moyenne_surface_log_train": -4.577434900943545e-16,
+    "moyenne_surface_log_validation": 0.024205816757197244
+  }
+}

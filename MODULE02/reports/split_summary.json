@@ -1,0 +1,114 @@
+{
+  "ensembles": {
+    "train": {
+      "nombre": 2049,
+      "categories": {
+        "Appartement": 486,
+        "Maison": 432,
+        "Villa": 353,
+        "Terrain": 301,
+        "Studio": 243,
+        "Chambre": 124,
+        "Local commercial": 110
+      },
+      "categories_pct": {
+        "Appartement": 23.718887262079065,
+        "Maison": 21.08345534407028,
+        "Villa": 17.227916056612983,
+        "Terrain": 14.690092728160078,
+        "Studio": 11.859443631039532,
+        "Chambre": 6.0517325524646175,
+        "Local commercial": 5.368472425573451
+      },
+      "sources": {
+        "plateforme": 587,
+        "particuliers": 422,
+        "agence": 407,
+        "historique": 356,
+        "notaires": 277
+      },
+      "sources_pct": {
+        "plateforme": 28.648121034651048,
+        "particuliers": 20.595412396290875,
+        "agence": 19.863347974621767,
+        "historique": 17.374328940946803,
+        "notaires": 13.518789653489508
+      }
+    },
+    "validation": {
+      "nombre": 439,
+      "categories": {
+        "Appartement": 104,
+        "Maison": 92,
+        "Villa": 75,
+        "Terrain": 64,
+        "Studio": 53,
+        "Chambre": 27,
+        "Local commercial": 24
+      },
+      "categories_pct": {
+        "Appartement": 23.690205011389523,
+        "Maison": 20.956719817767656,
+        "Villa": 17.084282460136674,
+        "Terrain": 14.578587699316628,
+        "Studio": 12.072892938496583,
+        "Chambre": 6.150341685649203,
+        "Local commercial": 5.466970387243736
+      },
+      "sources": {
+        "plateforme": 130,
+        "agence": 87,
+        "particuliers": 87,
+        "historique": 84,
+        "notaires": 51
+      },
+      "sources_pct": {
+        "plateforme": 29.6127562642369,
+        "agence": 19.81776765375854,
+        "particuliers": 19.81776765375854,
+        "historique": 19.134396355353076,
+        "notaires": 11.617312072892938
+      }
+    },
+    "test": {
+      "nombre": 440,
+      "categories": {
+        "Appartement": 104,
+        "Maison": 93,
+        "Villa": 76,
+        "Terrain": 65,
+        "Studio": 52,
+        "Chambre": 26,
+        "Local commercial": 24
+      },
+      "categories_pct": {
+        "Appartement": 23.636363636363637,
+        "Maison": 21.136363636363637,
+        "Villa": 17.272727272727273,
+        "Terrain": 14.772727272727273,
+        "Studio": 11.818181818181818,
+        "Chambre": 5.909090909090909,
+        "Local commercial": 5.454545454545454
+      },
+      "sources": {
+        "plateforme": 132,
+        "particuliers": 90,
+        "historique": 78,
+        "agence": 78,
+        "notaires": 62
+      },
+      "sources_pct": {
+        "plateforme": 30.0,
+        "particuliers": 20.454545454545457,
+        "historique": 17.727272727272727,
+        "agence": 17.727272727272727,
+        "notaires": 14.09090909090909
+      }
+    }
+  },
+  "identifiants_partages": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  }
+}

@@ -1,4 +1,4 @@
-"""Exécute le pipeline complet, du module 1 au module 2."""
+"""Exécute les pipelines des modules 1 et 2."""
 from MODULE01.src.main import main as executer_module01
 from MODULE02.src.run_pipeline import main as executer_module02
 

@@ -10,23 +10,23 @@ futur modèle de Machine Learning.
 
 ## Parcours du projet
 
-Le projet est **un seul dépôt composé de modules successifs**, pas deux projets
-indépendants.
+Le dépôt contient des modules distincts qui partagent les mêmes fichiers bruts
+et référentiels en lecture seule.
 
 1. **Module 1 — Bases Python et qualité des données** : charge les cinq formats
    de sources, harmonise les colonnes, nettoie et valide les valeurs, met les
    lignes bloquantes en quarantaine, repère les doublons, puis exporte le jeu
    propre et les rapports qualité.
-2. **Module 2 — Analyse et préparation** : lit le jeu propre du module 1 (sans
-   relire ni recopier les sources), explore les distributions et relations,
-   produit des graphiques, sépare train/validation/test, puis ajuste un pipeline
-   sklearn de préparation uniquement sur train.
+2. **Module 2 — Analyse et préparation** : relit directement les cinq sources
+   brutes, applique ses propres règles et produit ses propres données propres,
+   quarantaines et rapports. Il n'importe pas le code du module 1 et ne dépend
+   pas de ses sorties.
 3. **Modules suivants** : réutiliseront les ensembles préparés et le pipeline
    sérialisé pour entraîner, évaluer, améliorer et déployer des modèles.
 
-Le point de passage entre les deux premiers modules est
-`MODULE01/data/processed/donnees_propres.csv`. Les sources et référentiels
-canoniques sont stockés une seule fois dans `MODULE01/data/`.
+Les sources et référentiels canoniques sont stockés une seule fois dans
+`MODULE01/data/`. Le module 2 les lit sans les modifier ; ses résultats restent
+dans `MODULE02/`.
 
 ## Structure
 
@@ -42,14 +42,15 @@ MODULE02/
   models/                pipeline de préparation sérialisé
   notebooks/             exploration et préparation du module 2
   reports/               figures et résumé EDA
-  src/                   lecture du résultat module 1, EDA, features, pipeline
-  sortie/                ensembles préparés train/validation/test
+  src/                   chargement brut, nettoyage autonome, EDA et pipeline
+  sortie/                données propres, quarantaine, rapports et ensembles
   tests/                 tests unitaires du module 2
 run_project.py            lance le module 1 puis le module 2
 ```
 
-Les scripts et notebooks du module 2 pointent vers les sources et référentiels
-du module 1. Ne crée pas une deuxième copie des mêmes fichiers dans `MODULE02`.
+Les scripts et notebooks du module 2 lisent les sources et référentiels
+canoniques de `MODULE01/data/`. Ne lance pas le module 1 comme prérequis du
+module 2 et ne modifie pas ces fichiers d'entrée.
 
 ## Installation (Windows PowerShell)
 
@@ -76,9 +77,8 @@ python -m MODULE01.src.main
 python -m MODULE02.src.run_pipeline
 ```
 
-Le module 2 nécessite d'abord la sortie du module 1. Pour relancer seulement
-l'analyse, vérifie que `MODULE01/data/processed/donnees_propres.csv` existe et
-correspond aux données courantes.
+Le module 2 peut être lancé seul. Il a besoin des fichiers sources bruts et
+référentiels présents dans `MODULE01/data/`, mais pas de la sortie du module 1.
 
 Ouvrir les notebooks depuis la racine du dépôt :
 
@@ -93,7 +93,12 @@ Puis ouvrir `MODULE01/notebooks/01_exploration.ipynb` ou
 
 - Module 1 : `MODULE01/data/processed/`, `MODULE01/data/quarantine/` et
   `MODULE01/reports/`.
-- Module 2 : `MODULE02/reports/figures/`, `MODULE02/reports/eda_summary.json`,
+- Module 2 : `MODULE02/sortie/donnees_propres.csv`,
+  `MODULE02/sortie/quarantine.csv`,
+  `MODULE02/sortie/avertissements.csv`,
+  `MODULE02/sortie/rapport_qualite.md`,
+  `MODULE02/reports/figures/`, `MODULE02/reports/eda_summary.json`,
+  `MODULE02/reports/rapport_eda.md` et `MODULE02/reports/feature_cv.csv`,
   `MODULE02/sortie/prepared_train.csv`,
   `MODULE02/sortie/prepared_validation.csv`,
   `MODULE02/sortie/prepared_test.csv` et
@@ -103,12 +108,17 @@ Les CSV préparés incluent `prix_log` comme cible, mais cette cible n'est pas u
 feature d'entrée. `source` et `id_local` sont conservés comme métadonnées de
 traçabilité, pas comme variables d'entraînement.
 
+Le fichier `pipeline_preparation.joblib` contient uniquement le préprocesseur
+scikit-learn ajusté sur train (imputation, encodage et standardisation). Il ne
+contient pas de modèle prédictif entraîné ; cette étape appartient à un module
+ultérieur.
+
 ## Décisions de préparation
 
-- Les lignes invalides selon les règles bloquantes sont isolées au module 1 ;
-  les avertissements sont conservés et signalés.
-- Les données propres sont le seul contrat d'entrée du module 2 : le module 2
-  ne refait pas un second nettoyage divergent.
+- Le module 1 et le module 2 nettoient indépendamment les mêmes sources ; leurs
+  sorties et leurs rapports ne se remplacent pas.
+- Dans le module 2, les lignes bloquantes sont exportées en quarantaine et les
+  anomalies non bloquantes sont conservées avec un avertissement.
 - La cible explorée est `log(prix)` afin de réduire l'asymétrie potentielle des
   prix. Les métriques mesurées sont enregistrées dans le rapport EDA.
 - Le test de tendance de Mann-Kendall choisit le split : split chronologique si

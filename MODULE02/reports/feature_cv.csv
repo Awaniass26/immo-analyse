@@ -1,0 +1,7 @@
+candidate,r2_moyen_cv,ecart_type_cv,gain_vs_categorie,decision
+categorie,0.1666351993718645,0.031214005940581057,0.0,conserver pour le premier pipeline
+region,0.12494981725700441,0.03333117870155243,-0.04168538211486009,à réévaluer selon le cas d'usage
+surface_log,-0.002590016998834077,0.04292893688677586,-0.16922521637069857,conserver pour le premier pipeline
+annee,0.17022431530842289,0.04773335792683216,0.0035891159365583902,à réévaluer selon le cas d'usage
+source,0.23488819643852743,0.03262847048079402,0.06825299706666293,exclure du pipeline final : identifiant de flux
+prix_m2,0.9722977932159991,0.0037268720836945834,0.8056625938441346,exclure : calculé à partir de la cible

@@ -1,7 +1,8 @@
-# Règles métier — ImmoAnalyse
+# Règles métier — Module 2 ImmoAnalyse
 
-Ces règles sont appliquées et rapportées par le module 1. Le module 2 consomme
-son export propre au lieu de refaire un nettoyage indépendant.
+Ces règles sont appliquées par le pipeline du module 2 aux cinq sources brutes
+partagées en lecture seule avec le module 1. Les livrables du module 2 sont
+écrits dans `MODULE02/sortie/`.
 
 ## Règles bloquantes
 
