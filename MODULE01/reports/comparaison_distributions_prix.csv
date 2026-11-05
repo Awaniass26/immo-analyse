@@ -1,0 +1,7 @@
+etape,transaction,periodicite_location,nombre,moyenne_fcfa,mediane_fcfa,q1_fcfa,q3_fcfa,minimum_fcfa,maximum_fcfa
+Avant nettoyage,vente,sans objet,2608,104566938.8,74462000.0,39046750.0,129765750.0,5156000.0,567559000.0
+Avant nettoyage,location,mensuelle,177,397288.14,315000.0,190000.0,545000.0,40000.0,1480000.0
+Après validation,vente,sans objet,2544,104455133.02,74555500.0,38814250.0,128819000.0,5156000.0,567559000.0
+Après validation,location,mensuelle,175,395142.86,315000.0,187500.0,542500.0,40000.0,1480000.0
+Après doublons exacts,vente,sans objet,2534,104550271.27,74740000.0,38818250.0,129400250.0,5156000.0,567559000.0
+Après doublons exacts,location,mensuelle,171,395292.4,315000.0,187500.0,542500.0,40000.0,1480000.0

@@ -1,0 +1,7 @@
+etape,transaction,nombre,nombre_valeurs_extremes_iqr,moyenne_fcfa,mediane_fcfa,moyenne_sans_extremes_fcfa,mediane_sans_extremes_fcfa
+Avant nettoyage,vente,2608,230,104566938.8,74462000.0,79662621.28,67494000.0
+Avant nettoyage,location,177,8,397288.14,315000.0,355828.4,310000.0
+Après validation,vente,2544,227,104455133.02,74555500.0,79329354.08,66722000.0
+Après validation,location,175,8,395142.86,315000.0,353083.83,305000.0
+Après doublons exacts,vente,2534,227,104550271.27,74740000.0,79324942.52,66740000.0
+Après doublons exacts,location,171,8,395292.4,315000.0,352208.59,305000.0

@@ -1,0 +1,11 @@
+source,champ,total,manquants,non_convertibles,convertibles,valeurs_non_positives
+agence,prix,640,0,0,640,5
+agence,surface,640,0,0,640,4
+historique,prix,528,10,0,518,0
+historique,surface,528,0,0,528,0
+notaires,prix,410,14,0,396,0
+notaires,surface,410,0,0,410,0
+particuliers,prix,731,61,2,668,0
+particuliers,surface,731,75,4,652,0
+plateforme,prix,875,0,6,869,0
+plateforme,surface,875,5,0,870,0

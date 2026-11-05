@@ -34,7 +34,7 @@ dans `MODULE02/`.
 MODULE01/
   data/                 sources, référentiels, données propres et quarantaine
   notebooks/            exploration du module 1
-  reports/               rapports de qualité
+  reports/               rapports de qualité, analyses et figures
   src/                   chargement, nettoyage, validation, analyse, exports
   tests/                 tests unitaires du module 1
 MODULE02/
@@ -92,7 +92,11 @@ Puis ouvrir `MODULE01/notebooks/01_exploration.ipynb` ou
 ## Sorties principales
 
 - Module 1 : `MODULE01/data/processed/`, `MODULE01/data/quarantine/` et
-  `MODULE01/reports/`.
+  `MODULE01/reports/`. Le pipeline y génère aussi
+  `analyse_prix.md`, `comparaison_distributions_prix.csv` et cinq figures
+  dans `MODULE01/reports/figures/`, ainsi que les mesures de valeurs
+  manquantes (`qualite_valeurs_brutes.csv`) et l'effet des valeurs extrêmes
+  (`sensibilite_valeurs_extremes.csv`).
 - Module 2 : `MODULE02/sortie/donnees_propres.csv`,
   `MODULE02/sortie/quarantine.csv`,
   `MODULE02/sortie/avertissements.csv`,
@@ -133,6 +137,24 @@ ultérieur.
 
 Les justifications détaillées et les résultats de référence sont dans
 `MODULE02/docs/justifications.md`.
+
+## Visualisations du module 1
+
+Le rapport `MODULE01/reports/analyse_prix.md` compare les prix après conversion
+numérique, avant validation, après validation et après retrait des doublons
+exacts. Il distingue les ventes des loyers mensuels, car les loyers de
+périodicités inconnues ou différentes ne sont pas directement comparables.
+Les autres doublons probables restent signalés et ne sont pas fusionnés.
+
+Les figures présentent les distributions de prix, l'effet du retrait des
+doublons exacts, la sensibilité de la moyenne aux valeurs extrêmes et les prix
+médians au m² par type de bien et par ville. Les prix au m² sont calculés sur
+les ventes uniquement. L'analyse mesure aussi, par source, les prix et surfaces
+manquants ou non convertibles. Les valeurs extrêmes restent dans les données ;
+la règle de 1,5 fois l'écart interquartile sert seulement à illustrer leur
+influence sur les statistiques. Ces analyses restent descriptives : les
+données du projet sont synthétiques et ne représentent pas le marché immobilier
+réel.
 
 ## Vérification
 
